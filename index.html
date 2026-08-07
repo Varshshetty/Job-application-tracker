@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathway — Job Application Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark">&#9679;</span>
+      <span class="topbar__name">Pathway</span>
+    </div>
+    <div style="display: flex; gap: 0.6rem;">
+      <button class="btn btn--danger" id="clearAllBtn">Clear all</button>
+      <button class="btn btn--primary" id="addBtn">+ Add application</button>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <main class="board" id="board">
+    <!-- Columns are rendered by JS -->
+  </main>
+
+  <!-- Add / Edit modal -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal">
+      <div class="modal__head">
+        <h2 id="modalTitle">Add application</h2>
+        <button class="modal__close" id="modalClose" aria-label="Close">&#10005;</button>
+      </div>
+      <form id="appForm">
+        <input type="hidden" id="appId" />
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" required placeholder="e.g. Acme Corp" />
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <input type="text" id="role" required placeholder="e.g. Frontend Developer" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dateApplied">Date applied</label>
+            <input type="date" id="dateApplied" required />
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interview</option>
+              <option value="Offer">Offer</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="link">Job link (optional)</label>
+          <input type="url" id="link" placeholder="https://..." />
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" rows="3" placeholder="Recruiter name, salary range, follow-up dates..."></textarea>
+        </div>
+
+        <div class="modal__actions">
+          <button type="button" class="btn btn--danger" id="deleteBtn" hidden>Delete</button>
+          <button type="submit" class="btn btn--primary btn--full">Save application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
