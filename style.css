@@ -225,6 +225,18 @@ body {
   text-decoration: none;
 }
 
+.job-card__notes {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ---------- Modal ---------- */
 
 .modal-overlay {

@@ -131,6 +131,11 @@ function formatDate(iso) {
   return d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
 }
 
+function truncate(str, max) {
+  if (str.length <= max) return str;
+  return str.slice(0, max).trimEnd() + "…";
+}
+
 function renderStats(apps) {
   statsEl.innerHTML = STATUSES.map((s) => {
     const count = apps.filter((a) => a.status === s.key).length;
@@ -158,6 +163,7 @@ function renderBoard(apps) {
             <span>${formatDate(app.dateApplied)}</span>
             ${app.link ? `<a href="${app.link}" target="_blank" rel="noopener" class="job-card__link" onclick="event.stopPropagation()">Job link \u2197</a>` : ""}
           </div>
+          ${app.notes ? `<div class="job-card__notes">${escapeHtml(truncate(app.notes, 60))}</div>` : ""}
         </div>
       `
           )
